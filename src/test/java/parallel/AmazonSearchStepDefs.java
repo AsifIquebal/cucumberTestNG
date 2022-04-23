@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
-public class StepDefs {
+public class AmazonSearchStepDefs {
 
     @Given("Step from {string} in {string} feature file")
     public void step(String scenario, String file) {
@@ -20,7 +20,11 @@ public class StepDefs {
 
     @Then("User searches for {string}")
     public void userSearchesFor(String arg0) {
-        DriverFactory.getInstance().getDriver().findElement(By.id("twotabsearchtextbox")).sendKeys(arg0+ Keys.ENTER);
+        DriverFactory
+                .getInstance()
+                .getDriver()
+                .findElement(By.id("twotabsearchtextbox"))
+                .sendKeys(arg0 + Keys.ENTER);
     }
 
     @Then("User closes browser")
