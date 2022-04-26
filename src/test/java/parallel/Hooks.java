@@ -29,15 +29,13 @@ public class Hooks {
 		driver = driverFactory.init_driver(browserName);
 	}*/
 
-
     @After(order = 1)
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             String screenshotName = scenario.getName().replaceAll(" ", "_");
             byte[] sourcePath = ((TakesScreenshot) DriverFactory.getInstance().getDriver()).getScreenshotAs(OutputType.BYTES);
-			System.out.println(Arrays.toString(sourcePath));
-			scenario.attach(sourcePath, "image/png", screenshotName);
-
+            System.out.println(Arrays.toString(sourcePath));
+            scenario.attach(sourcePath, "image/png", screenshotName);
         }
     }
 
@@ -45,4 +43,5 @@ public class Hooks {
     public void quitBrowser() {
         DriverFactory.getInstance().removeDriver();
     }
+
 }
