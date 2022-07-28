@@ -8,9 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 import java.util.Properties;
-
 public class Hooks {
-
     private DriverFactory driverFactory;
     private WebDriver driver;
     //private ConfigReader configReader;
@@ -28,7 +26,6 @@ public class Hooks {
 		driverFactory = new DriverFactory();
 		driver = driverFactory.init_driver(browserName);
 	}*/
-
     @After(order = 1)
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
@@ -38,7 +35,6 @@ public class Hooks {
             scenario.attach(sourcePath, "image/png", screenshotName);
         }
     }
-
     @After(order = 0)
     public void quitBrowser() {
         DriverFactory.getInstance().removeDriver();
