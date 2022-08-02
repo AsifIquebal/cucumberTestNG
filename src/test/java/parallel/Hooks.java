@@ -26,7 +26,7 @@ public class Hooks {
 		driverFactory = new DriverFactory();
 		driver = driverFactory.init_driver(browserName);
 	}*/
-    @After(order = 1)
+    //@After(order = 1)
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             String screenshotName = scenario.getName().replaceAll(" ", "_");
@@ -35,7 +35,7 @@ public class Hooks {
             scenario.attach(sourcePath, "image/png", screenshotName);
         }
     }
-    @After(order = 0)
+    //@After(order = 0)
     public void quitBrowser() {
         DriverFactory.getInstance().removeDriver();
     }
