@@ -16,5 +16,5 @@ Feature: Cucumber Learning Session
     Given the following datatable and convert to pojo with DataTableTypeAnnotation
       | name            | position         | office        |
       | Tiger Nixon     | System Architect | Edinburgh     |
-      | Garrett Winters | Accountant       | Tokyo         |
+      | Garrett Winters | [anonymous]      | Tokyo         |
       | Asif 1          | Tester           | San Francisco |

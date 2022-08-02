@@ -31,12 +31,12 @@ public class DataTableExamples {
     @Given("the following datatable and convert to pojo with DataTableTypeAnnotation")
     public void the_following_datatable_and_convert_to_pojo_DataTableType_Annotation(List<Employee> employeeList) {
         for (Employee employee : employeeList) {
-            System.out.println(employee.getName() + " | " + employee.getPosition() + " | " + employee.getPosition());
+            System.out.println(employee.getName() + " | " + employee.getPosition() + " | " + employee.getOffice());
         }
     }
 
-    @DataTableType
-    public Employee emloyeeEntry(Map<String, String> entry) {
+    @DataTableType(replaceWithEmptyString = "[anonymous]")
+    public Employee emloyeeEntryTransformer(Map<String, String> entry) {
         return new Employee(entry.get("name"), entry.get("position"), entry.get("office"));
     }
 
