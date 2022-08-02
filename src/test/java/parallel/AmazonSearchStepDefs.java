@@ -15,21 +15,20 @@ public class AmazonSearchStepDefs {
 
     @Given("User open browser and  navigates to {string}")
     public void userOpenBrowserAndNavigatesTo(String arg0) {
-        DriverFactory.getInstance().getDriver().get(arg0);
+        DriverFactory.getDriver().get(arg0);
     }
 
     @Then("User searches for {string}")
     public void userSearchesFor(String arg0) {
         DriverFactory
-                .getInstance()
                 .getDriver()
                 .findElement(By.id("twotabsearchtextbox"))
                 .sendKeys(arg0 + Keys.ENTER);
     }
 
-    @Then("User closes browser")
+    /*@Then("User closes browser")
     public void userClosesBrowser() {
-        DriverFactory.getInstance().removeDriver();
-    }
+        DriverFactory.removeDriver();
+    }*/
 
 }

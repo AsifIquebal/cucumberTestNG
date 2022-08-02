@@ -5,10 +5,8 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import pageObjects.Employee;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class DataTableExamples {
     @Given("the following datatable and convert to list")
@@ -19,7 +17,6 @@ public class DataTableExamples {
         System.out.println(data.get(1).get(1));
         System.out.println(data);*/
     }
-
     @Given("the following datatable and convert to map")
     public void the_following_datatable_and_convert_to_map(DataTable dataTable) {
         List<Map<String, String>> mapList = dataTable.asMaps(String.class, String.class);
@@ -27,26 +24,22 @@ public class DataTableExamples {
             System.out.println(map.get("name") + " | " + map.get("position") + " | " + map.get("office"));
         }
     }
-
     @Given("the following datatable and convert to pojo with DataTableTypeAnnotation")
     public void the_following_datatable_and_convert_to_pojo_DataTableType_Annotation(List<Employee> employeeList) {
         for (Employee employee : employeeList) {
             System.out.println(employee.getName() + " | " + employee.getPosition() + " | " + employee.getOffice());
         }
     }
-
     @DataTableType(replaceWithEmptyString = "[anonymous]")
     public Employee emloyeeEntryTransformer(Map<String, String> entry) {
         return new Employee(entry.get("name"), entry.get("position"), entry.get("office"));
     }
-
-
-    @Given("the following datatable and convert to pojo")
+    /*@Given("the following datatable and convert to pojo")
     public void the_following_datatable_and_convert_to_pojo1(List<Employee> employeeList) {
         //public void the_following_datatable_and_convert_to_pojo(DataTable dataTable) {
         //List<Employee> employeeList = dataTable.asList(Employee.class);
         for (Employee employee : employeeList) {
             System.out.println(employee.getName() + " | " + employee.getPosition() + " | " + employee.getPosition());
         }
-    }
+    }*/
 }
