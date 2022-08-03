@@ -15,17 +15,17 @@ public class Hooks {
     private DriverFactory driverFactory;
     private WebDriver driver;
     private ConfigReader configReader;
-    Properties prop;
+    Properties properties;
 
     @Before(value = "@browser", order = 0)
     public void getProperty() {
         configReader = new ConfigReader();
-        prop = configReader.init_prop();
+        properties = configReader.getProperties();
     }
 
     @Before(value = "@browser", order = 1)
     public void launchBrowser() {
-        String browserName = prop.getProperty("browser");
+        String browserName = properties.getProperty("browser");
         driverFactory = new DriverFactory();
         driver = driverFactory.initDriver(browserName);
     }

@@ -9,7 +9,7 @@ public class LoginPage {
 	private By emailId = By.id("email");
 	private By password = By.id("passwd");
 	private By signInButton = By.id("SubmitLogin");
-	private By forgotPwdLink = By.linkText("Forgot your password?");
+	private By forgotPasswordLink = By.linkText("Forgot your password?");
 
 	// 2. Constructor of the page class:
 	public LoginPage(WebDriver driver) {
@@ -21,7 +21,7 @@ public class LoginPage {
 		return driver.getTitle();
 	}
 	public boolean isForgotPwdLinkExist() {
-		return driver.findElement(forgotPwdLink).isDisplayed();
+		return driver.findElement(forgotPasswordLink).isDisplayed();
 	}
 	public void enterUserName(String username) {
 		driver.findElement(emailId).sendKeys(username);
