@@ -7,23 +7,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
-    //private static WebDriver driver;
-    //private static DriverFactory instance = new DriverFactory();
     public static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
-    /*static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<WebDriver>() {
-        @Override
-        protected WebDriver initialValue() {
-            if (driver == null) {
-                WebDriverManager.chromedriver().cachePath(System.getProperty("user.dir") + "/src/test/resources/drivers").setup();
-                ChromeOptions options = new ChromeOptions();
-                driver = new ChromeDriver(options);
-            }
-            return driver;
-        }
-    };*/
-    /*private DriverFactory() {
-        //Do-nothing..Do not allow to initialize this class from outside
-    }*/
+
     public WebDriver initDriver(String browser) {
         System.out.println("browser value is: " + browser);
         switch (browser) {
@@ -48,12 +33,11 @@ public class DriverFactory {
         getDriver().manage().window().maximize();
         return getDriver();
     }
-    /*public static DriverFactory getInstance() {
-        return instance;
-    }*/
+
     public static WebDriver getDriver() {
         return threadLocalDriver.get();
     }
+
     public void removeDriver() {
         System.out.println("Quit driver.....................");
         threadLocalDriver.get().quit();

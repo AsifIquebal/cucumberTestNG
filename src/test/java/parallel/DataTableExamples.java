@@ -31,8 +31,8 @@ public class DataTableExamples {
         }
     }
     @DataTableType(replaceWithEmptyString = "[anonymous]")
-    public Employee emloyeeEntryTransformer(Map<String, String> entry) {
-        return new Employee(entry.get("name"), entry.get("position"), entry.get("office"));
+    public Employee emloyeeEntryTransformer(Map<String, String> map) {
+        return new Employee(map.get("name"), map.get("position"), map.get("office"));
     }
     /*@Given("the following datatable and convert to pojo")
     public void the_following_datatable_and_convert_to_pojo1(List<Employee> employeeList) {
