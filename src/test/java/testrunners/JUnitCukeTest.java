@@ -15,8 +15,9 @@ import org.junit.runner.RunWith;
 		monochrome = true,
 		glue = {"parallel"},
 		features = {"src/test/resources/parallel/"},
-		tags = "@automation_practice"
+		//tags = "@automation_practice"
 		//tags = "@dt"
+		tags = "@sample"
 		)
 
 public class JUnitCukeTest {
