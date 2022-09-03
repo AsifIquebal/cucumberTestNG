@@ -1,8 +1,6 @@
 package parallel;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -35,7 +33,7 @@ public class Hooks {
         if (scenario.isFailed()) {
             String screenshotName = scenario.getName().replaceAll(" ", "_");
             byte[] sourcePath = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
-            System.out.println(Arrays.toString(sourcePath));
+            //System.out.println(Arrays.toString(sourcePath));
             scenario.attach(sourcePath, "image/png", screenshotName);
         }
     }
@@ -45,4 +43,13 @@ public class Hooks {
         driver.quit();
     }
 
+    @BeforeStep
+    public void beforeStep() {
+        System.out.println("this is before step hook");
+    }
+
+    @AfterStep
+    public void afterStep() {
+        System.out.println("this is after step hook");
+    }
 }
